@@ -1,0 +1,63 @@
+<form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+    <div *ngIf="studentForm.value.id"><span>ID: </span>{{studentForm.value.id}}</div>
+    <div>
+      <label for="student-name">Firstname: </label>
+      <input class="student-info" type="text" formControlName="firstName">
+      
+    </div>
+    <div>
+        <label for="student-name">Lastname: </label>
+        <input class="student-info" type="text" formControlName="lastName">
+    </div>
+    <div>
+      <label for="student-DOB">DOB: </label>
+      <input class="student-info" type="date" formControlName="dob" >
+      
+    </div>
+    <div>
+      <label for="student-gender">Gender: </label>
+      <input class="student-info" type="text" formControlName="gender">
+      
+    </div>
+    <div>
+      <label for="student-CMND">CMND: </label>
+      <input class="student-info" type="text" formControlName="cmnd">
+      
+    </div>
+    <div>
+      <label for="student-motherName">Mother's name: </label>
+      <input class="student-info" type="text" formControlName="motherName">
+      
+    </div>
+    <div>
+        <label for="student-fatherName">Father's name: </label>
+        <input class="student-info" type="text" formControlName="fatherName">
+    </div>
+    <div>
+      <label for="student-phoneNumber">Phone number: </label>
+      <input class="student-info" type="text" formControlName="phoneNumber">
+      
+    </div>
+    <div>
+        <label for="student-email">Email: </label>
+        <input class="student-info" type="text" formControlName="emailAddress">
+        
+      </div>
+      <div>
+          <label for="student-address">Address: </label>
+          <input class="student-info" type="text" formControlName="address">
+      </div>
+      <div>
+          <label for="student-dayJoin">Day join: </label>
+          <input class="student-info" type="date" formControlName="dayJoin">
+      </div>
+      <div>
+        <label for="student-dayLeave">Day leave: </label>
+        <input class="student-info" type="date" formControlName="dayLeave">
+    </div>
+    <div>
+        <p>Complete the form to enable button.</p>
+        <button type="submit" >Save</button>
+    </div>
+
+</form>

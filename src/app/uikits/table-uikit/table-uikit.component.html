@@ -1,0 +1,33 @@
+<div class="styl-table-container">
+    <!-- #stylTable -->
+    <nz-table class="styl-table" [nzData]="tableData" [nzLoading]="isLoading" [nzFrontPagination]="false"
+        [nzShowPagination]="false" [nzScroll]="scroll ? scroll : { x: '900px', y: '655px' }">
+        <thead class="styl-table-header">
+            <tr class="styl-table-header-row">
+                <th *ngFor="let col of tableCols;" [nzSortFn]="col.isEnableServerSort"
+                    [nzSortDirections]="col.sortDirections" [nzSortOrder]="col.sortOrder" [ngStyle]="{
+              'min-width': col.width ? col.width : '120px' ,
+              'max-width': col.maxWidth ? col.maxWidth : 'unset'
+            }" [nzWidth]="col.nzWidth" [nzColumnKey]="col.key">
+                    {{ col.title }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="styl-table-striped-rows" *ngFor="let data of tableData; let i = index">
+                <ng-container *ngFor="let col of tableCols" [ngSwitch]="true">
+                    <td *ngSwitchCase="col.isOutletTemplate"
+                        [ngStyle]="{'max-width': col.maxWidth ? col.maxWidth : 'unset'}" [nzEllipsis]="col.ellipsis"
+                        [nzBreakWord]="col.breakWord" [nzAlign]="col.align">
+                        <ng-container [ngTemplateOutlet]="templateOutlet"
+                            [ngTemplateOutletContext]="{ data:data, header:col, index:i }"></ng-container>
+                    </td>
+                    <td *ngSwitchDefault [ngStyle]="{'max-width': col.maxWidth ? col.maxWidth : 'unset'}"
+                        [nzEllipsis]="col.ellipsis" [nzBreakWord]="col.breakWord">
+                        {{ data[col.key] }}
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

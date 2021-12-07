@@ -1,0 +1,23 @@
+<h2>My Students</h2>
+<a routerLink='/students/create'>
+  <button>Create new student</button>
+</a>
+
+<div>
+  <app-table-uikit [tableCols]="tableCols" [tableData]="tableData" [isLoading]="isLoading"
+    [templateOutlet]="templateOutlet">
+  </app-table-uikit>
+
+  <ng-template #templateOutlet let-data="data" let-header="header">
+    <ng-container *ngIf="header.title === 'Action'">
+        <button>
+          <a routerLink="/students/{{data.id}}">
+            Edit
+          </a>
+        </button>
+      <button (click)="deleteStudent(data)">
+        Delete
+      </button>
+    </ng-container>
+  </ng-template>
+</div>
